@@ -6,15 +6,15 @@ import (
 
 var app *gofr.App
 
-func initialiseServer(){ 
-	app=gofr.New()
+func initialiseServer() {
+	app = gofr.New()
 }
 
-func registerControllers(){
-	mainPageController() 
+func registerControllers() {
+	mainPageController()
 }
 
-func StartServer(){
+func StartServer() {
 	initialiseServer()
 	registerControllers()
 	app.Run()

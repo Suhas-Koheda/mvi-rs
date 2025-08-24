@@ -8,9 +8,9 @@ import (
 	initializers "github.com/suhas-koheda/mvi-rs/initialisers"
 )
 
-func main()  {
-		env.LoadEnv()
+func main() {
+	env.LoadEnv()
 	fmt.Println(env.EnvKey)
-		controllers.StartServer() 
-		initializers.InitialiseDatabase() 
+	controllers.StartServer()
+	initializers.InitialiseDatabase()
 }
