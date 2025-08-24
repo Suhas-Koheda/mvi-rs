@@ -5,11 +5,12 @@ import (
 
 	"github.com/suhas-koheda/mvi-rs/controllers"
 	"github.com/suhas-koheda/mvi-rs/env"
+	initializers "github.com/suhas-koheda/mvi-rs/initialisers"
 )
 
 func main()  {
 		env.LoadEnv()
 	fmt.Println(env.EnvKey)
-		controllers.InitialiseServer() 
-		controllers.Controllers() 
+		controllers.StartServer() 
+		initializers.InitialiseDatabase() 
 }

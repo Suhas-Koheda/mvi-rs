@@ -7,13 +7,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var EnvKey string
+var EnvKey string 
 
-func LoadEnv()  {
-	err:=godotenv.Load()
-	if err!=nil{
-		log.Fatal("Failed to load .env file")
+func LoadEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Printf("Warning: Could not load .env file: %v", err)
+		log.Println("Using system environment variables instead")
 	}
 
-	EnvKey=os.Getenv("envkey")
+	EnvKey = os.Getenv("ENVKEY") 
+	if EnvKey == "" {
+		log.Println("Warning: ENVKEY environment variable is not set")
+	}
 }

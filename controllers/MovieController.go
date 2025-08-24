@@ -2,7 +2,7 @@ package controllers
 
 import "gofr.dev/pkg/gofr"
 
-func MainPageController()  {
+func mainPageController()  {
 	app.GET("/",mainPageHandler)
 }
 
