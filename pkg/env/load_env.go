@@ -1,4 +1,4 @@
-package env
+package loadenv
 
 import (
 	"log"
@@ -7,7 +7,10 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var EnvKey string
+var (
+	EnvKey     string
+	HashSecret string
+)
 
 func LoadEnv() {
 	err := godotenv.Load()
@@ -20,4 +23,6 @@ func LoadEnv() {
 	if EnvKey == "" {
 		log.Println("Warning: ENVKEY environment variable is not set")
 	}
+
+	HashSecret = os.Getenv("HASHSECRET")
 }

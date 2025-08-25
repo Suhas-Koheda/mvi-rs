@@ -1,8 +1,8 @@
 package main
 
 import (
-	initializers "github.com/suhas-koheda/mvi-rs/initialisers"
-	"github.com/suhas-koheda/mvi-rs/models"
+	"github.com/suhas-koheda/mvi-rs/internal/models"
+	initializers "github.com/suhas-koheda/mvi-rs/pkg/initialisers"
 )
 
 func init() {
