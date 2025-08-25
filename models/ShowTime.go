@@ -19,3 +19,10 @@ type Showtime struct {
 	Reservations []Reservation `gorm:"foreignKey:ShowtimeID"`
 	Seats        []Seat        `gorm:"foreignKey:ShowtimeID"`
 }
+
+func (s *Showtime) BeforeSave(tx *gorm.DB) (err error) {
+	// TODO
+	//:implement the endtime here before saving this indirectly fetches the movies form DB
+	// better way would be to implement in the service layer and save it
+	return nil
+}
