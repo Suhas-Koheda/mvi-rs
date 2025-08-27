@@ -15,13 +15,13 @@ var (
 	err error
 )
 
-func GetJWT(userID string, role string) (string, error) {
+func GetJWT(email string, role string) (string, error) {
 	key = []byte(loadenv.HashSecret)
 	t = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"user_id": userID,
-		"role":    role,
-		"exp":     time.Now().Add(time.Hour * 24).Unix(),
-		"issued":  time.Now().Unix(),
+		"email":  email,
+		"role":   role,
+		"exp":    time.Now().Add(time.Hour * 24).Unix(),
+		"issued": time.Now().Unix(),
 	})
 	s, err = t.SignedString(key)
 	if err != nil {
@@ -71,7 +71,7 @@ func GetUserFromToken(tokenString string) (string, string, error) {
 		return "", "", err
 	}
 
-	userID, ok := claims["user_id"].(string)
+	email, ok := claims["email"].(string)
 	if !ok {
 		return "", "", fmt.Errorf("user_id claim not found or invalid")
 	}
@@ -81,5 +81,5 @@ func GetUserFromToken(tokenString string) (string, string, error) {
 		return "", "", fmt.Errorf("role claim not found or invalid")
 	}
 
-	return userID, role, nil
+	return email, role, nil
 }

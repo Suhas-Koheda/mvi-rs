@@ -12,6 +12,7 @@ func initialiseServer() {
 
 func registerControllers() {
 	mainPageController()
+	authControllers()
 }
 
 func StartServer() {
