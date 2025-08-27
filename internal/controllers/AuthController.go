@@ -40,6 +40,8 @@ func signUpHandler(ctx *gofr.Context) (interface{}, error) {
 			},
 		}, nil
 	}
+	println(&request)
+	println(token)
 	return response.Raw{
 		Data: map[string]interface{}{
 			"statuscode": http.StatusAccepted,
@@ -96,11 +98,11 @@ func signInHandler(ctx *gofr.Context) (interface{}, error) {
 	}, nil
 }
 
-func authenticateUser(username string, password string) bool {
+func authenticateUser(emial string, password string) bool {
 	// TODO: the logic to check if the user exists in the database or not
-	if username == "test" {
+	if emial == "test@gmail.com" {
+		println("Here")
 		return password == "password"
 	}
 	return false
 }
-
