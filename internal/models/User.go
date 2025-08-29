@@ -11,7 +11,6 @@ const (
 
 type User struct {
 	gorm.Model
-	ID           uint   `gorm:"primaryKey"`
 	Email        string `gorm:"uniqueIndex;not null"`
 	PasswordHash string `gorm:"not null"`
 	FirstName    string

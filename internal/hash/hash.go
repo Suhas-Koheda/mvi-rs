@@ -1,4 +1,4 @@
-package hash
+package hashpkg
 
 import "golang.org/x/crypto/bcrypt"
 
@@ -7,7 +7,13 @@ func HashPassword(unhashed string) (string, error) {
 	return string(bytes), err
 }
 
-func CheckPasswordHash(password string, hashed string) bool {
+func CheckPasswordHash(password string, hashed string) (bool, error) {
 	err := bcrypt.CompareHashAndPassword([]byte(hashed), []byte(password))
-	return err == nil
+	if err != nil {
+		if err == bcrypt.ErrMismatchedHashAndPassword {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }
